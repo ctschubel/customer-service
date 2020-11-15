@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 import de.cts.customerservice.model.Customer;
 
@@ -31,6 +32,7 @@ class CustomerRepoTest {
 	}
 
 	@Test
+	@DirtiesContext
 	public void save_multiple_ok() {
 		List<Customer> customers = IntStream.range(0, 100)
 				.mapToObj(i -> new Customer("chris", "ScharnhorstStraße 46", "ctschubel@googlemail.com", 24))
