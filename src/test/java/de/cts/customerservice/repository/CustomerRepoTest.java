@@ -8,7 +8,10 @@ import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.test.annotation.DirtiesContext;
 
 import de.cts.customerservice.model.Customer;
@@ -17,6 +20,7 @@ import de.cts.customerservice.model.Customer;
  * @author chris
  */
 @DataMongoTest
+@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = CommandLineRunner.class) )
 class CustomerRepoTest {
 
 	@Autowired
@@ -24,7 +28,7 @@ class CustomerRepoTest {
 
 	@Test
 	public void save_one_ok() {
-		Customer customer = new Customer("chris", "ScharnhorstStraße 46", "ctschubel@googlemail.com", 24);
+		Customer customer = new Customer("Theo", "Test", "theo@test.com", 24);
 		this.repo.save(customer);
 		List<Customer> customers = this.repo.findAll();
 
@@ -35,7 +39,7 @@ class CustomerRepoTest {
 	@DirtiesContext
 	public void save_multiple_ok() {
 		List<Customer> customers = IntStream.range(0, 100)
-				.mapToObj(i -> new Customer("chris", "ScharnhorstStraße 46", "ctschubel@googlemail.com", 24))
+				.mapToObj(i -> new Customer("Theo", "Test", "theo@test.com", 24))
 				.collect(Collectors.toList());
 		this.repo.saveAll(customers);
 		List<Customer> actualCustomers = this.repo.findAll();

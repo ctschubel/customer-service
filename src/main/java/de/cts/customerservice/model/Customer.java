@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
  */
 public class Customer {
 
-	private String name, address, email;
+	private String firstName, lastName, email;
 	private int age;
 	@Id
 	private String id;
@@ -19,13 +19,15 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(String name, String address, String email, int age) {
+	public Customer(String firstName, String lastName, String email, int age) {
 		super();
-		this.name = name;
-		this.address = address;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.age = age;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -40,6 +42,46 @@ public class Customer {
 	@Override
 	public boolean equals(Object obj) {
 		return EqualsBuilder.reflectionEquals(this, obj);
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void s(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
