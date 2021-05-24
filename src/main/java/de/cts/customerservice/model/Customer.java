@@ -3,6 +3,7 @@ package de.cts.customerservice.model;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -19,19 +20,17 @@ public class Customer {
 	public Customer() {
 	}
 
-	public Customer(String firstName, String lastName, String email, int age) {
+	public Customer(final String firstName, final String lastName, final String email, final int age) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.age = age;
 	}
-	
-	
 
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
 	}
 
 	@Override
@@ -40,47 +39,47 @@ public class Customer {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		return EqualsBuilder.reflectionEquals(this, obj);
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return this.firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(final String firstName) {
 		this.firstName = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return this.lastName;
 	}
 
-	public void s(String lastName) {
+	public void s(final String lastName) {
 		this.lastName = lastName;
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
 	public int getAge() {
-		return age;
+		return this.age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(final int age) {
 		this.age = age;
 	}
 
 	public String getId() {
-		return id;
+		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
